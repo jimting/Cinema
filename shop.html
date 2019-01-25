@@ -48,9 +48,11 @@
 		<script>
 			var groceryData, groceryDataLength, page, notificationData;
 			var quantity;
+			var buyListData, itemName, itemURL, itemPrice, alreadyBuyPage;
 			function init()
 			{
 				initNotification();
+				initAlreadyBuyList();
 			
 				$.ajax({
 		        url: "http://140.121.196.23:4103/getGrocery",
@@ -210,7 +212,7 @@
 					cache: false,
 					success: function(response)
 					{ 
-						console.log(response);
+						//console.log(response);
 						//trans string to jsonarray
 						notificationData = $.parseJSON(response);
 						//clear notification list
@@ -249,6 +251,68 @@
 							initNotification();
 						}
 					});
+				}
+			}
+			function initAlreadyBuyList()
+			{
+				$.ajax({
+		        url: "http://140.121.196.23:4103/getGroceryFromOrderList",
+				data:
+				{
+					userID : 1
+				},
+				type:"GET",
+		        success: function (response) 
+		        {
+					buyListData = $.parseJSON(response);
+					
+					//set the goodslist
+					//clear the goodslist
+					$('#alreadyBuyList').html('');
+					
+					//***five per page***
+					// default page = 1
+					alreadyBuyPage = 1;
+					
+					for(var i = alreadyBuyPage*5-5;i < alreadyBuyPage*5;i++)
+					{
+						if(buyListData[i])
+							$('#alreadyBuyList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+buyListData[i].img_url+'" class="img-responsive grocery-item" style="width:100%" alt="'+buyListData[i].name+'"><p>$ '+buyListData[i].price+'</p></div><div class="col-sm-5 text-area">'+buyListData[i].name+'<div class="form-group"><h3>已購買 '+buyListData[i].quantity+' 件</h3></div></div></div></div></a>');
+					}
+				},
+		        dataType: "text",
+		        cache: false
+		        });
+			}
+			function nextAPage()
+			{
+				if(alreadyBuyPage < buyListData.length/5)
+				{
+					//clear the goodslist
+					$('#alreadyBuyList').html('');
+						
+					alreadyBuyPage++;
+					for(var i = alreadyBuyPage*5-5;i < alreadyBuyPage*5;i++)
+					{
+						if(buyListData[i])
+							$('#alreadyBuyList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+buyListData[i].img_url+'" class="img-responsive grocery-item" style="width:100%" alt="'+buyListData[i].name+'"><p>$ '+buyListData[i].price+'</p></div><div class="col-sm-5 text-area">'+buyListData[i].name+'<div class="form-group"><h3>已購買 '+buyListData[i].quantity+' 件</h3></div></div></div></div></a>');
+					}
+				}
+			}
+			function lastAPage()
+			{
+				if(alreadyBuyPage > 1)
+				{
+				
+					//clear the goodslist
+					$('#alreadyBuyList').html('');
+					
+					alreadyBuyPage--;
+					for(var i = alreadyBuyPage*5-5;i < alreadyBuyPage*5;i++)
+					{
+						if(buyListData[i])
+							$('#alreadyBuyList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+buyListData[i].img_url+'" class="img-responsive grocery-item" style="width:100%" alt="'+buyListData[i].name+'"><p>$ '+buyListData[i].price+'</p></div><div class="col-sm-5 text-area">'+buyListData[i].name+'<div class="form-group"><h3>已購買 '+buyListData[i].quantity+' 件</h3></div></div></div></div></a>');
+					}
 				}
 			}
 		</script>
@@ -368,7 +432,8 @@
 				<div class="col-sm-4">
 				</div>
 				<div class="col-sm-4">
-					<button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#GoodsListModal">See more</button> 
+					<button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#BuyListModal">Buy List</button>
+					<button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#GoodsListModal">See more</button>					
 				</div>
 				<div class="col-sm-4">
 				</div>
@@ -494,7 +559,74 @@
 
 			</div>
 		</div>
-		
+		<!--Already Buy List-->
+		<div id="BuyListModal" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">alreadyBuyList</h4>
+					</div>
+					<div class="modal-body">
+						<div class="list-group" id="alreadyBuyList">
+							<a href="#" class="list-group-item">
+								<div class="container text-center"> 
+									<div class="row">
+										<div class="col-sm-3">
+											<img src="https://placehold.it/150x80?text=Something" class="img-responsive" style="width:100%" alt="Something">
+											<p>Name</p>
+										</div>
+									
+										<div class="col-sm-9">
+										Intro.
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#" class="list-group-item">
+								<div class="container text-center"> 
+									<div class="row">
+										<div class="col-sm-3">
+											<img src="https://placehold.it/150x80?text=Something" class="img-responsive" style="width:100%" alt="Something">
+											<p>Name</p>
+										</div>
+									
+										<div class="col-sm-9">
+										Intro.
+										</div>
+									</div>
+								</div>
+							</a>
+							<a href="#" class="list-group-item">
+								<div class="container text-center"> 
+									<div class="row">
+										<div class="col-sm-3">
+											<img src="https://placehold.it/150x80?text=Something" class="img-responsive" style="width:100%" alt="Something">
+											<p>Name</p>
+										</div>
+									
+										<div class="col-sm-9">
+										Intro.
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<span class="col-sm-5">
+							<button type="button" class="btn btn-default btn-block" onclick=lastAPage()><</button>
+						</span>
+						<span class="col-sm-5">
+							<button type="button" class="btn btn-default btn-block" onclick=nextAPage()>></button>
+						</span><button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
 		<!--Footer-->
 		<footer class="container-fluid text-center">
 			<p>2018 - Copyright / Contact us:1234-5678</p>
