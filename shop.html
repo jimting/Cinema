@@ -193,8 +193,11 @@
 						quantity : quantityString
 					},
 					dataType: "text",
-					error: function(){alert('error');},
-					success: function(msg){ alert("success"); }
+					success: function(msg)
+					{
+						alert("success"); 
+						location.reload();
+					}
 				});
 			}
 			function initNotification()
