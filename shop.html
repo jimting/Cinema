@@ -44,6 +44,10 @@
 			{
 				height:200px;
 			}
+			.row-item
+			{
+				min-height:500px;
+			}
 		</style>
 		<script>
 			var groceryData, groceryDataLength, page, notificationData;
@@ -87,14 +91,14 @@
 					for(var i = 0;i < 3;i++)
 					{
 						var random = Math.floor((Math.random() * groceryDataLength));
-						$("#row1").append('<div class="col-sm-4" data-toggle="modal" data-target="#GoodsModal" onclick=setGoodsModal('+random+')><div class="panel panel-primary"><div class="panel-heading">New! $'+groceryData[random].price+'</div><div class="panel-body"><img src="'+groceryData[random].img_url+'" class="img-responsive" style="width:100%" alt="'+groceryData[random].name+'"></div><div class="panel-footer">'+groceryData[random].name+'</div></div></div>');
+						$("#row1").append('<div class="col-sm-4" data-toggle="modal" data-target="#GoodsModal" onclick=setGoodsModal('+random+')><div class="panel panel-primary  row-item"><div class="panel-heading">New! $'+groceryData[random].price+'</div><div class="panel-body"><img src="'+groceryData[random].img_url+'" class="img-responsive" style="width:100%" alt="'+groceryData[random].name+'"></div><div class="panel-footer">'+groceryData[random].name+'</div></div></div>');
 					}
 					//clear row2 and set content
 					$("#row2").html('');
 					for(var i = 0;i < 3;i++)
 					{
 						var random = Math.floor((Math.random() * groceryDataLength));
-						$("#row2").append('<div class="col-sm-4" data-toggle="modal" data-target="#GoodsModal" onclick=setGoodsModal('+random+')><div class="panel panel-primary"><div class="panel-heading">New! $'+groceryData[random].price+'</div><div class="panel-body"><img src="'+groceryData[random].img_url+'" class="img-responsive" style="width:100%" alt="'+groceryData[random].name+'"></div><div class="panel-footer">'+groceryData[random].name+'</div></div></div>');
+						$("#row2").append('<div class="col-sm-4" data-toggle="modal" data-target="#GoodsModal" onclick=setGoodsModal('+random+')><div class="panel panel-primary  row-item"><div class="panel-heading">New! $'+groceryData[random].price+'</div><div class="panel-body"><img src="'+groceryData[random].img_url+'" class="img-responsive" style="width:100%" alt="'+groceryData[random].name+'"></div><div class="panel-footer">'+groceryData[random].name+'</div></div></div>');
 					}
 					
 					//set the goodslist
