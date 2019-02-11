@@ -31,7 +31,7 @@ public class CinemaController {
     }
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping("shop.html")
+	@RequestMapping(value = "shop.html", method = RequestMethod.GET)
     public void shop(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException 
     {
     	RequestDispatcher view;
