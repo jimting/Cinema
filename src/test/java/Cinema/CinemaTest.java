@@ -1,5 +1,8 @@
 package Cinema;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -31,7 +34,9 @@ public class CinemaTest {
 	@Test				
 	public void testEasy() 
 	{	
-		driver.get("main/resources/static/index.html");  
+		Path sampleFile = Paths.get("index.html");
+		driver.get(sampleFile.toUri().toString());
+		//driver.get("main/resources/static/index.html");  
 		String title = driver.getTitle();				 
 		Assert.assertTrue(title.contains("Cinema - Home")); 		
 	}
