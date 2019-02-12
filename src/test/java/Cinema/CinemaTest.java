@@ -23,6 +23,7 @@ public class CinemaTest {
 		System.setProperty("webdriver.chrome.driver","src/lib/chromedriver");
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("useAutomationExtension", false);
+		options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
 	}		
 	
