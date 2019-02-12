@@ -68,6 +68,7 @@
 			function init()
 			{
 				initNotification();
+				initOrderedList();
 				
 				$.ajax({
 		        url: "http://140.121.196.23:4104/getAllMovies",
@@ -76,6 +77,8 @@
 		        {
 					//trans string to jsonarray
 					movieData = $.parseJSON(response);
+					
+					console.log("movieData: " + movieData);
 					
 					//data's length
 					movieDataLength = movieData.length;
@@ -128,6 +131,8 @@
 		        cache: false
 		        });
 			}
+			
+			
 			function setMoviesModal(i)
 			{
 				//change the info in movies modal
@@ -248,6 +253,72 @@
 				}
 			}
 			
+			function initOrderedList()
+			{
+				$.ajax({
+		        url: "http://140.121.196.23:4104/getMovieByID",
+				data:
+				{
+					userID : 1
+				},
+				type:"GET",
+		        success: function (response) 
+		        {
+					orderedListData = $.parseJSON(response);
+					
+					console.log("orderedListData: " + orderedListData);
+					
+					//set the goodslist
+					//clear the goodslist
+					$('#OrderedList').html('');
+					
+					//***five per page***
+					// default page = 1
+					orderedPage = 1;
+					
+					for(var i = orderedPage*5-5;i < orderedPage*5;i++)
+					{
+						if(orderedListData[i])
+							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].ImgPath+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].MovieName+'"><p>$ '+orderedListData[i].Price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].MovieName+'</div></div></div></a>');
+					}
+				},
+		        dataType: "text",
+		        cache: false
+		        });
+			}
+			
+			function nextAPage()
+			{
+				if(orderedPage < orderedListData.length/5)
+				{
+					//clear the goodslist
+					$('#OrderedList').html('');
+						
+					orderedPage++;
+					for(var i = orderedPage*5-5;i < orderedPage*5;i++)
+					{
+						if(orderedListData[i])
+							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].ImgPath+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].MovieName+'"><p>$ '+orderedListData[i].Price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].MovieName+'</div></div></div></a>');
+					}
+				}
+			}
+			function lastAPage()
+			{
+				if(orderedPage > 1)
+				{
+				
+					//clear the goodslist
+					$('#OrderedList').html('');
+					
+					orderedPage--;
+					for(var i = orderedPage*5-5;i < orderedPage*5;i++)
+					{
+						if(orderedListData[i])
+							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].ImgPath+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].MovieName+'"><p>$ '+orderedListData[i].Price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].MovieName+'</div></div></div></a>');
+					}
+				}
+			}
+			
 			
 		</script>
 	</head>
@@ -328,6 +399,7 @@
 			<div class="row">
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4">
+					<button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#OrderedListModal">Ordered List</button>
 					<button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#MovieListModal">Buy new movies</button>
 				</div>
 				<div class="col-sm-4"></div>
@@ -413,6 +485,34 @@
 						</span>
 						<button class="btn btn-default" onclick=checkMovie()>buy</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!--Ordered List-->
+		<div id="OrderedListModal" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Ordered List</h4>
+					</div>
+					<div class="modal-body">
+						<div class="list-group" id="OrderedList">
+							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<span class="col-sm-5">
+							<button type="button" class="btn btn-default btn-block" onclick=lastAPage()><</button>
+						</span>
+						<span class="col-sm-5">
+							<button type="button" class="btn btn-default btn-block" onclick=nextAPage()>></button>
+						</span><button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
 					</div>
 				</div>
 
