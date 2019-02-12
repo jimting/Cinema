@@ -33,8 +33,7 @@ public class CinemaTest {
 	@Test				
 	public void testEasy() 
 	{	
-		Path sampleFile = Paths.get("index.html");
-		driver.get(sampleFile.toUri().toString());
+		driver.get("src/resources/static/index.html");
 		//driver.get("main/resources/static/index.html");  
 		String title = driver.getTitle();				 
 		Assert.assertTrue(title.contains("Cinema - Home")); 		
