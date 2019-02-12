@@ -16,7 +16,7 @@ public class CinemaTest {
 	@Before
 	public void beforeTest() 
 	{	
-		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 
 		// Tell the Java bindings to use Marionette.
 		// This will not be necessary in the future,
