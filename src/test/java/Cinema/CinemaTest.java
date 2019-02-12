@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -18,23 +19,16 @@ public class CinemaTest {
 	@Before
 	public void beforeTest() 
 	{	
-		ChromeOptions capabilities = new ChromeOptions();
-
-		// Tell the Java bindings to use Marionette.
-		// This will not be necessary in the future,
-		// when Selenium will auto-detect what remote end
-		// it is talking to.
-		capabilities.setCapability("marionette", true);
-
-		driver = new RemoteWebDriver(capabilities);
-	    //driver = new FirefoxDriver();  
+		//設定要用什麼瀏覽器來測試
+		System.setProperty("webdriver.chrome.driver","src/lib/chromedriver.exe");
+		driver=new ChromeDriver();
 	}		
 	
 	@Test				
-	public void testEasy() 
+	public void testTitle() 
 	{	
-		driver.get("140.121.196.23:4101");
-		//driver.get("main/resources/static/index.html");  
+		//看看首頁的Title文字是否正確
+		driver.get("http://140.121.196.23:4107/");
 		String title = driver.getTitle();			
 		System.out.print("Title:"+title);
 		Assert.assertTrue(title.contains("Cinema - Home")); 		
@@ -43,6 +37,7 @@ public class CinemaTest {
 	@After
 	public void afterTest() 
 	{
+		//結束測試
 		driver.quit();			
 	}		
 
