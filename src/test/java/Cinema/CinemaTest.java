@@ -20,7 +20,7 @@ public class CinemaTest {
 	public void beforeTest() 
 	{	
 		//設定要用什麼瀏覽器來測試
-		System.setProperty("webdriver.chrome.driver","src/lib/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","src/lib/chromedriver");
 		driver=new ChromeDriver();
 	}		
 	
