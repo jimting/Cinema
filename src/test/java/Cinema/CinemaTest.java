@@ -8,8 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class CinemaTest {
@@ -19,7 +18,7 @@ public class CinemaTest {
 	@Before
 	public void beforeTest() 
 	{	
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		ChromeOptions capabilities = new ChromeOptions();
 
 		// Tell the Java bindings to use Marionette.
 		// This will not be necessary in the future,
