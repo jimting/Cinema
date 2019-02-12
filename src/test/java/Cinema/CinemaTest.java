@@ -10,16 +10,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class CinemaTest {
 
 	private WebDriver driver;		
+		
+	@Before
+	public void beforeTest() {	
+	    driver = new FirefoxDriver();  
+	}		
+	
 	@Test				
 	public void testEasy() {	
 		driver.get("http://140.121.196.23:4107/");  
 		String title = driver.getTitle();				 
 		Assert.assertTrue(title.contains("Cinema - Home")); 		
-	}	
-	@Before
-	public void beforeTest() {	
-	    driver = new FirefoxDriver();  
-	}		
+	}
+	
 	@After
 	public void afterTest() {
 		driver.quit();			
