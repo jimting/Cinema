@@ -33,9 +33,10 @@ public class CinemaTest {
 	@Test				
 	public void testEasy() 
 	{	
-		driver.get("src/resources/static/index.html");
+		driver.get("140.121.196.23:4101");
 		//driver.get("main/resources/static/index.html");  
-		String title = driver.getTitle();				 
+		String title = driver.getTitle();			
+		System.out.print("Title:"+title);
 		Assert.assertTrue(title.contains("Cinema - Home")); 		
 	}
 	
