@@ -1,16 +1,11 @@
 package Cinema;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class CinemaTest {
 
@@ -20,11 +15,8 @@ public class CinemaTest {
 	public void beforeTest() 
 	{	
 		//設定要用什麼瀏覽器來測試
-		System.setProperty("webdriver.chrome.driver","src/lib/chromedriver");
-		ChromeOptions options = new ChromeOptions();
-		options.setExperimentalOption("useAutomationExtension", false);
-		options.addArguments("--no-sandbox");
-		driver = new ChromeDriver(options);
+		System.setProperty("webdriver.gecko.driver","src/lib/geckodriver");
+		driver = new FirefoxDriver();
 	}		
 	
 	@Test				
