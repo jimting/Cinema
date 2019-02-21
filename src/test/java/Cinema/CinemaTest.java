@@ -30,7 +30,7 @@ public class CinemaTest {
 	public void testTitle() 
 	{	
 		//看看首頁的Title文字是否正確
-		driver.get("http://140.121.196.23:4107/");
+		driver.get("index.html");
 		String title = driver.getTitle();			
 		System.out.print("Title:"+title);
 		Assert.assertTrue(title.contains("Cinema - Home")); 		
