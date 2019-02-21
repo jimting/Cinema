@@ -21,10 +21,9 @@ public class CinemaTest {
 	{	
 		//設定要用什麼瀏覽器來測試
 		System.setProperty("webdriver.chrome.driver","src/lib/chromedriver");
-		ChromeOptions options = new ChromeOptions();
-		options.setExperimentalOption("useAutomationExtension", false);
-		options.addArguments("--no-sandbox");
-		driver = new ChromeDriver(options);
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--headless");
+		driver = new ChromeDriver(chromeOptions);
 	}		
 	
 	@Test				
