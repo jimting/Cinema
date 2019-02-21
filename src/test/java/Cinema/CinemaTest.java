@@ -26,23 +26,25 @@ public class CinemaTest {
 		driver = new ChromeDriver(chromeOptions);
 	}		
 	
-	@Test				
+	@Test	
+	//test index's title
 	public void testIndexTitle() 
 	{	
-		//看看首頁的Title文字是否正確
 		driver.get("file:///var/lib/tomcat8/.jenkins/workspace/Cinema/src/main/resources/static/index.html");
 		String title = driver.getTitle();			
 		Assert.assertTrue(title.contains("Cinema - Home")); 		
 	}
 	
 	@Test
+	//test shop's title
 	public void testShopTitle()
 	{
-		//看看shop的Title文字是否正確
 		driver.get("file:///var/lib/tomcat8/.jenkins/workspace/Cinema/src/main/resources/static/shop.html");
 		String title = driver.getTitle();			
 		Assert.assertTrue(title.contains("Cinema - Shop")); 		
 	}
+	
+	
 	
 	@After
 	public void afterTest() 
