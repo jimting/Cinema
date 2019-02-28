@@ -126,6 +126,8 @@
 						if(movieData[i])
 							$('#moviesList').append('<a href="#" class="list-group-item"><input type="checkbox" name="orderMovie" value="' + movieData[i]._id.$oid + '"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+movieData[i].ImgPath+'" class="img-responsive" alt="'+movieData[i].MovieName+'"><p>$ '+movieData[i].Price+'</p></div><div class="col-sm-5 text-area">'+movieData[i].MovieName+'</div></div></div></a>');
 					}
+					
+					return movieData;
 		        },
 		        dataType: "text",
 		        cache: false
@@ -228,6 +230,7 @@
 						else
 							$('#unreadMessage').html("");
 					}
+					return notificationData;
 				});
 			}
 			function setRead()
@@ -281,6 +284,7 @@
 						if(orderedListData[i])
 							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].ImgPath+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].MovieName+'"><p>$ '+orderedListData[i].Price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].MovieName+'</div></div></div></a>');
 					}
+					return orderedListData;
 				},
 		        dataType: "text",
 		        cache: false
