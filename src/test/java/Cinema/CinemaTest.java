@@ -29,7 +29,7 @@ public class CinemaTest {
 		//設定要用什麼瀏覽器來測試
 		System.setProperty("webdriver.chrome.driver","src/lib/chromedriver");
 		ChromeOptions chromeOptions = new ChromeOptions();
-		//chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("--headless");
 		driver = new ChromeDriver(chromeOptions);
 		js = (JavascriptExecutor) driver;
 	}		
