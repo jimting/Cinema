@@ -74,7 +74,7 @@ public class CinemaTest {
 	public void afterTest() 
 	{
 		//結束測試
-		//driver.quit();			
+		driver.quit();			
 	}	
 	
 	public void waitForPageLoaded() {
