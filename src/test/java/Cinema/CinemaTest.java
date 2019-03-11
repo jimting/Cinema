@@ -41,7 +41,7 @@ public class CinemaTest {
 		driver = new ChromeDriver(chromeOptions);
 		js = (JavascriptExecutor) driver;
 	}		
-
+//
 //	//test index's title
 //	@Test
 //	public void test1_1_IndexTitle() 
@@ -90,7 +90,7 @@ public class CinemaTest {
 //		System.out.println(driver.findElement(By.xpath("//button[@data-target='#MovieListModal']")).getText());
 //		
 //		//等個幾秒 讓電影列表跳出來
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //		
 //		//按妖貓傳的選擇框框
 //		driver.findElement(By.xpath("//input[@value='5c35ddefa3f01c41d8bb4174']")).click();
@@ -99,13 +99,13 @@ public class CinemaTest {
 //		else
 //			System.out.println("沒有選擇");
 //		//等個幾秒 讓按鈕點下去
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //		
 //		//按下購買Button
 //		driver.findElement(By.xpath("//button[@id='orderBtn']")).click();;
 //		
 //		//等個幾秒 讓購買loading好
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //				
 //		//拿到alert訊息
 //		Alert alert = driver.switchTo().alert();
@@ -145,12 +145,12 @@ public class CinemaTest {
 //		//點擊訊息按鈕
 //		driver.findElement(By.id("dropdown")).click();
 //		//等個幾秒 讓點擊工作完成
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //		
 //		//重新整理並等待loading
 //		driver.navigate().refresh();
 //		//等個幾秒 畫面刷新
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //				
 //		//確定新訊息數目==0
 //		int notificationCount;
@@ -211,17 +211,17 @@ public class CinemaTest {
 //		//按周邊列表
 //		driver.findElement(By.xpath("//button[@data-target='#GoodsListModal']")).click();
 //		//等個幾秒 讓列表跳出來
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //		
 //		//將重低音耳機的數量設為1
 //		driver.findElement(By.xpath("//input[@id=\"quantity3\"]")).sendKeys("1");
 //		//等個幾秒 讓動作完成
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //		
 //		//按下購買Button
 //		driver.findElement(By.xpath("//button[@id='orderBtn']")).click();;
 //		//等個幾秒 讓購買動作完成
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //				
 //		//拿到alert訊息
 //		Alert alert = driver.switchTo().alert();
@@ -261,12 +261,12 @@ public class CinemaTest {
 //		//點擊訊息按鈕
 //		driver.findElement(By.id("dropdown")).click();
 //		//等個幾秒 讓點擊工作完成
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //			
 //		//重新整理並等待loading
 //		driver.navigate().refresh();
 //		//等個幾秒 畫面刷新
-//		Thread.sleep(500);
+//		Thread.sleep(3000);
 //					
 //		//確定新訊息數目==0
 //		int notificationCount;
@@ -282,51 +282,51 @@ public class CinemaTest {
 //		Assert.assertTrue(notificationCount==0);
 //	}
 //	
-////	//測試是否拿到所有已購買電影資料
-////	@Test
-////	public void test1_6_GetMovieOrderedList()
-////	{
-////		//拿到變數 orderedListData 並確認電影資料
-////		// Use the timeout when navigating to a webpage
-////		driver.get("http://140.121.196.23:4107/");
-////		//等個幾秒 讓頁面Ajax loading好
-////		waitForPageLoaded();
-////		try {
-////			//拿到了
-////			JSONArray orderedListData = new JSONArray((String)js.executeScript("return JSON.stringify(orderedListData);"));
-////			System.out.println((String)js.executeScript("return JSON.stringify(orderedListData);"));
-////			//如果第3筆資料的電影名稱是 "妖貓傳" ，就通過
-////			Assert.assertTrue(orderedListData.getJSONObject(orderedListData.length()).getString("MovieName").contains("妖貓傳"));
-////			
-////		} catch (JSONException e) {
-////			// TODO Auto-generated catch block
-////			e.printStackTrace();
-////		}	
-////	}
-////	
-////	//測試是否拿到所有已購買電影資料
-////	@Test
-////	public void test2_6_GetGroceryOrderedList()
-////	{
-////		//拿到變數 buyListData 並確認電影資料
-////		// Use the timeout when navigating to a webpage
-////		driver.get("http://140.121.196.23:4107/shop.html");
-////		//等個幾秒 讓頁面Ajax loading好
-////		waitForPageLoaded();
-////		try {
-////			//拿到了
-////			JSONArray buyListData = new JSONArray((String)js.executeScript("return JSON.stringify(buyListData);"));
-////			System.out.println((String)js.executeScript("return JSON.stringify(buyListData);"));
-////			//如果第3筆資料的電影名稱是 "妖貓傳" ，就通過
-////			Assert.assertTrue(buyListData.getJSONObject(buyListData.length()).getString("MovieName").contains("妖貓傳"));
-////				
-////		} catch (JSONException e) {
-////			// TODO Auto-generated catch block
-////			e.printStackTrace();
-////		}	
-////	}
-////	
-////	
+//	//測試是否拿到所有已購買電影資料
+//	@Test
+//	public void test1_6_GetMovieOrderedList()
+//	{
+//		//拿到變數 orderedListData 並確認電影資料
+//		// Use the timeout when navigating to a webpage
+//		driver.get("http://140.121.196.23:4107/");
+//		//等個幾秒 讓頁面Ajax loading好
+//		waitForPageLoaded();
+//		try {
+//			//拿到了
+//			JSONArray orderedListData = new JSONArray((String)js.executeScript("return JSON.stringify(orderedListData);"));
+//			System.out.println((String)js.executeScript("return JSON.stringify(orderedListData);"));
+//			//如果第3筆資料的電影名稱是 "妖貓傳" ，就通過
+//			Assert.assertTrue(orderedListData.getJSONObject(orderedListData.length()).getString("MovieName").contains("妖貓傳"));
+//			
+//		} catch (JSONException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}	
+//	}
+//	
+//	//測試是否拿到所有已購買電影資料
+//	@Test
+//	public void test2_6_GetGroceryOrderedList()
+//	{
+//		//拿到變數 buyListData 並確認電影資料
+//		// Use the timeout when navigating to a webpage
+//		driver.get("http://140.121.196.23:4107/shop.html");
+//		//等個幾秒 讓頁面Ajax loading好
+//		waitForPageLoaded();
+//		try {
+//			//拿到了
+//			JSONArray buyListData = new JSONArray((String)js.executeScript("return JSON.stringify(buyListData);"));
+//			System.out.println((String)js.executeScript("return JSON.stringify(buyListData);"));
+//			//如果第3筆資料的電影名稱是 "妖貓傳" ，就通過
+//			Assert.assertTrue(buyListData.getJSONObject(buyListData.length()).getString("MovieName").contains("妖貓傳"));
+//				
+//		} catch (JSONException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}	
+//	}
+//	
+	
 	@After
 	public void afterTest() 
 	{

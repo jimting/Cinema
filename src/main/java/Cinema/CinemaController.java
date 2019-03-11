@@ -34,6 +34,32 @@ public class CinemaController {
 		view.forward(request, response);
     }
 	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/grocery_files", method = RequestMethod.GET)
+    public void grocery_files(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException 
+    {
+    	RequestDispatcher view;
+    	view = request.getRequestDispatcher("grocery_files");
+		view.forward(request, response);
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/HK_movies", method = RequestMethod.GET)
+    public void HK_movies(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException 
+    {
+    	RequestDispatcher view;
+    	view = request.getRequestDispatcher("HK_movies");
+		view.forward(request, response);
+    }
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/TW_movies", method = RequestMethod.GET)
+    public void TW_movies(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException 
+    {
+    	RequestDispatcher view;
+    	view = request.getRequestDispatcher("TW_movies");
+		view.forward(request, response);
+    }
 	
 }
 
