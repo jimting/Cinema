@@ -296,7 +296,7 @@ public class CinemaTest {
 			JSONArray orderedListData = new JSONArray((String)js.executeScript("return JSON.stringify(orderedListData);"));
 			System.out.println((String)js.executeScript("return JSON.stringify(orderedListData);"));
 			//如果第3筆資料的電影名稱是 "妖貓傳" ，就通過
-			Assert.assertTrue(orderedListData.getJSONObject(orderedListData.length()).getString("MovieName").contains("妖貓傳"));
+			Assert.assertTrue(orderedListData.getJSONObject(orderedListData.length()-1).getString("MovieName").contains("妖貓傳"));
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -318,7 +318,7 @@ public class CinemaTest {
 			JSONArray buyListData = new JSONArray((String)js.executeScript("return JSON.stringify(buyListData);"));
 			System.out.println((String)js.executeScript("return JSON.stringify(buyListData);"));
 			//如果第3筆資料的商品名稱包含 "貓耳耳機" ，就通過
-			Assert.assertTrue(buyListData.getJSONObject(buyListData.length()).getString("name").contains("貓耳耳機"));
+			Assert.assertTrue(buyListData.getJSONObject(buyListData.length()-1).getString("name").contains("貓耳耳機"));
 				
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
