@@ -304,11 +304,11 @@ public class CinemaTest {
 		}	
 	}
 	
-	//測試是否拿到所有已購買電影資料
+	//測試是否拿到所有已購買周邊資料
 	@Test
 	public void test2_6_GetGroceryOrderedList()
 	{
-		//拿到變數 buyListData 並確認電影資料
+		//拿到變數 buyListData 並確認周邊資料
 		// Use the timeout when navigating to a webpage
 		driver.get("http://140.121.196.23:4107/shop.html");
 		//等個幾秒 讓頁面Ajax loading好
@@ -317,8 +317,8 @@ public class CinemaTest {
 			//拿到了
 			JSONArray buyListData = new JSONArray((String)js.executeScript("return JSON.stringify(buyListData);"));
 			System.out.println((String)js.executeScript("return JSON.stringify(buyListData);"));
-			//如果第3筆資料的電影名稱是 "妖貓傳" ，就通過
-			Assert.assertTrue(buyListData.getJSONObject(buyListData.length()).getString("MovieName").contains("妖貓傳"));
+			//如果第3筆資料的商品名稱包含 "貓耳耳機" ，就通過
+			Assert.assertTrue(buyListData.getJSONObject(buyListData.length()).getString("name").contains("貓耳耳機"));
 				
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
