@@ -318,7 +318,7 @@ public class CinemaTest {
 			JSONArray buyListData = new JSONArray((String)js.executeScript("return JSON.stringify(buyListData);"));
 			System.out.println((String)js.executeScript("return JSON.stringify(buyListData);"));
 			//如果第3筆資料的商品名稱包含 "貓耳耳機" ，就通過
-			Assert.assertTrue(buyListData.getJSONObject(buyListData.length()-1).getString("name").contains("測試"));
+			Assert.assertTrue(buyListData.getJSONObject(buyListData.length()-1).getString("name").contains("貓耳耳機"));
 				
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
