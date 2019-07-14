@@ -332,7 +332,7 @@ public class CinemaTest {
 					}
 				};
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			wait.until(expectation);
 		} catch (Throwable error) {
