@@ -194,7 +194,10 @@
 					},
 					dataType: "text",
 					error: function(){alert('error');},
-					success: function(msg){ alert(msg); }
+					success: function(msg){
+						alert(msg);
+						location.reload();
+					}
 				});
 				
 			}
