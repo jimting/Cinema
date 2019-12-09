@@ -59,7 +59,7 @@
 				initAlreadyBuyList();
 			
 				$.ajax({
-		        url: "http://140.121.196.23:4103/getGrocery",
+		        url: "http://140.121.196.23:4139/groceryinventory/getGrocery",
 				data:
 				{
 					userID : 1
@@ -189,7 +189,7 @@
 				
 				$.ajax({
 					type: "get",
-					url: "http://140.121.196.23:4103/orderingGrocery",
+					url: "http://140.121.196.23:4139/groceryinventory/orderingGrocery",
 					
 					data:
 					{
@@ -209,7 +209,7 @@
 				//init the Notification List
 				$.ajax({
 					type: "get",
-					url: "http://140.121.196.23:4103/getNotification?userID=1",
+					url: "http://140.121.196.23:4139/groceryinventory/getNotification?userID=1",
 					
 					data:
 					{
@@ -246,7 +246,7 @@
 				{
 					$.ajax({
 						type: "get",
-						url: "http://140.121.196.23:4102/setNotificationRead",
+						url: "http://140.121.196.23:4139/notification/setNotificationRead",
 					
 						data:
 						{
@@ -264,7 +264,7 @@
 			function initAlreadyBuyList()
 			{
 				$.ajax({
-		        url: "http://140.121.196.23:4103/getGroceryFromOrderList",
+		        url: "http://140.121.196.23:4139/groceryinventory/getGroceryFromOrderList",
 				data:
 				{
 					userID : 1
