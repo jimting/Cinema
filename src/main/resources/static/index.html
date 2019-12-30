@@ -65,7 +65,7 @@
 		</style>
 		<script>
 			var movieData, movieDataLength,page, notificationData;
-			var orderedListData, itemName, itemURL, itemPrice, orderedPage;
+			var orderedListData, itemName, itemURL, itemprice, orderedPage;
 			function init()
 			{
 				initNotification();
@@ -91,10 +91,10 @@
 					{
 						var random = Math.floor((Math.random() * movieDataLength));
 						if(i == 0)
-							$("#movieSlider").append('<div class="item active"  data-toggle="modal" data-target="#MovieModal" onclick=setMoviesModal('+random+')><img src="'+movieData[random].ImgPath+'" alt="'+movieData[random].MovieName+'"><div class="carousel-caption"><h3>'+movieData[random].MovieName+'</h3><p>Click to info.</p></div></div>');
+							$("#movieSlider").append('<div class="item active"  data-toggle="modal" data-target="#MovieModal" onclick=setMoviesModal('+random+')><img src="'+movieData[random].img_url+'" alt="'+movieData[random].movie_name+'"><div class="carousel-caption"><h3>'+movieData[random].movie_name+'</h3><p>Click to info.</p></div></div>');
 
 						else
-							$("#movieSlider").append('<div class="item"  data-toggle="modal" data-target="#MovieModal" onclick=setMoviesModal('+random+')><img src="'+movieData[random].ImgPath+'" alt="'+movieData[random].MovieName+'"><div class="carousel-caption"><h3>'+movieData[random].MovieName+'</h3><p>Click to info.</p></div></div>');
+							$("#movieSlider").append('<div class="item"  data-toggle="modal" data-target="#MovieModal" onclick=setMoviesModal('+random+')><img src="'+movieData[random].img_url+'" alt="'+movieData[random].movie_name+'"><div class="carousel-caption"><h3>'+movieData[random].movie_name+'</h3><p>Click to info.</p></div></div>');
 					}
 					
 					//set movies content(total 2 rows and 3 goods per row) in id=row1, row2
@@ -103,7 +103,7 @@
 					for(var i = 0;i < 4;i++)
 					{
 						var random = Math.floor((Math.random() * movieDataLength));
-						$("#row1").append('<div class="col-sm-3" data-toggle="modal" data-target="#MovieModal" onclick=setMoviesModal('+random+')><div class="panel panel-primary"><div class="panel-heading">New! $'+movieData[random].Price+'</div><div class="panel-body"><img src="'+movieData[random].ImgPath+'" class="img-responsive" style="width:100%" alt="'+movieData[random].MovieName+'"></div><div class="panel-footer">'+movieData[random].MovieName+'</div></div></div>');
+						$("#row1").append('<div class="col-sm-3" data-toggle="modal" data-target="#MovieModal" onclick=setMoviesModal('+random+')><div class="panel panel-primary"><div class="panel-heading">New! $'+movieData[random].price+'</div><div class="panel-body"><img src="'+movieData[random].img_url+'" class="img-responsive" style="width:100%" alt="'+movieData[random].movie_name+'"></div><div class="panel-footer">'+movieData[random].movie_name+'</div></div></div>');
 
 					}
 					//clear row2 and set content
@@ -111,7 +111,7 @@
 					for(var i = 0;i < 4;i++)
 					{
 						var random = Math.floor((Math.random() * movieDataLength));
-						$("#row2").append('<div class="col-sm-3" data-toggle="modal" data-target="#MovieModal" onclick=setMoviesModal('+random+')><div class="panel panel-primary"><div class="panel-heading">New! $'+movieData[random].Price+'</div><div class="panel-body"><img src="'+movieData[random].ImgPath+'" class="img-responsive" style="width:100%" alt="'+movieData[random].MovieName+'"></div><div class="panel-footer">'+movieData[random].MovieName+'</div></div></div>');
+						$("#row2").append('<div class="col-sm-3" data-toggle="modal" data-target="#MovieModal" onclick=setMoviesModal('+random+')><div class="panel panel-primary"><div class="panel-heading">New! $'+movieData[random].price+'</div><div class="panel-body"><img src="'+movieData[random].img_url+'" class="img-responsive" style="width:100%" alt="'+movieData[random].movie_name+'"></div><div class="panel-footer">'+movieData[random].movie_name+'</div></div></div>');
 					}
 					
 					//set the movieslist
@@ -125,7 +125,7 @@
 					for(var i = page*5-5;i < page*5;i++)
 					{
 						if(movieData[i])
-							$('#moviesList').append('<a href="#" class="list-group-item"><input type="checkbox" name="orderMovie" value="' + movieData[i]._id.$oid + '"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+movieData[i].ImgPath+'" class="img-responsive" alt="'+movieData[i].MovieName+'"><p>$ '+movieData[i].Price+'</p></div><div class="col-sm-5 text-area">'+movieData[i].MovieName+'</div></div></div></a>');
+							$('#moviesList').append('<a href="#" class="list-group-item"><input type="checkbox" name="orderMovie" value="' + movieData[i]._id.$oid + '"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+movieData[i].img_url+'" class="img-responsive" alt="'+movieData[i].movie_name+'"><p>$ '+movieData[i].price+'</p></div><div class="col-sm-5 text-area">'+movieData[i].movie_name+'</div></div></div></a>');
 					}
 					
 					return movieData;
@@ -139,7 +139,7 @@
 			function setMoviesModal(i)
 			{
 				//change the info in movies modal
-				$('#movieModalContent').html('<div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">$ '+movieData[i].Price+'</h4></div><div class="modal-body"><img src="'+movieData[i].ImgPath+'" class="img-responsive" alt="Something"><p>'+movieData[i].MovieName+'</p></div>')
+				$('#movieModalContent').html('<div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">$ '+movieData[i].price+'</h4></div><div class="modal-body"><img src="'+movieData[i].img_url+'" class="img-responsive" alt="Something"><p>'+movieData[i].movie_name+'</p></div>')
 			}
 			
 			function nextPage()
@@ -153,7 +153,7 @@
 					for(var i = page*5-5;i < page*5;i++)
 					{
 						if(movieData[i])
-							$('#moviesList').append('<a href="#" class="list-group-item"><input type="checkbox" name="orderMovie" value="' + movieData[i]._id.$oid + '"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+movieData[i].ImgPath+'" class="img-responsive" alt="'+movieData[i].MovieName+'"><p>$ '+movieData[i].Price+'</p></div><div class="col-sm-5 text-area">'+movieData[i].MovieName+'</div></div></div></a>');
+							$('#moviesList').append('<a href="#" class="list-group-item"><input type="checkbox" name="orderMovie" value="' + movieData[i]._id.$oid + '"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+movieData[i].img_url+'" class="img-responsive" alt="'+movieData[i].movie_name+'"><p>$ '+movieData[i].price+'</p></div><div class="col-sm-5 text-area">'+movieData[i].movie_name+'</div></div></div></a>');
 					}
 				}
 			}
@@ -168,7 +168,7 @@
 					for(var i = page*5-5;i < page*5;i++)
 					{
 						if(movieData[i])
-							$('#moviesList').append('<a href="#" class="list-group-item"><input type="checkbox" name="orderMovie" value="' + movieData[i]._id.$oid + '"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+movieData[i].ImgPath+'" class="img-responsive" alt="'+movieData[i].MovieName+'"><p>$ '+movieData[i].Price+'</p></div><div class="col-sm-5 text-area">'+movieData[i].MovieName+'</div></div></div></a>');
+							$('#moviesList').append('<a href="#" class="list-group-item"><input type="checkbox" name="orderMovie" value="' + movieData[i]._id.$oid + '"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+movieData[i].img_url+'" class="img-responsive" alt="'+movieData[i].movie_name+'"><p>$ '+movieData[i].price+'</p></div><div class="col-sm-5 text-area">'+movieData[i].movie_name+'</div></div></div></a>');
 					}
 				}
 			}
@@ -286,7 +286,7 @@
 					for(var i = orderedPage*5-5;i < orderedPage*5;i++)
 					{
 						if(orderedListData[i])
-							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].ImgPath+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].MovieName+'"><p>$ '+orderedListData[i].Price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].MovieName+'</div></div></div></a>');
+							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].img_url+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].movie_name+'"><p>$ '+orderedListData[i].price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].movie_name+'</div></div></div></a>');
 					}
 					return orderedListData;
 				},
@@ -306,7 +306,7 @@
 					for(var i = orderedPage*5-5;i < orderedPage*5;i++)
 					{
 						if(orderedListData[i])
-							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].ImgPath+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].MovieName+'"><p>$ '+orderedListData[i].Price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].MovieName+'</div></div></div></a>');
+							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].img_url+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].movie_name+'"><p>$ '+orderedListData[i].price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].movie_name+'</div></div></div></a>');
 					}
 				}
 			}
@@ -322,7 +322,7 @@
 					for(var i = orderedPage*5-5;i < orderedPage*5;i++)
 					{
 						if(orderedListData[i])
-							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].ImgPath+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].MovieName+'"><p>$ '+orderedListData[i].Price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].MovieName+'</div></div></div></a>');
+							$('#OrderedList').append('<a href="#" class="list-group-item"><div class="container text-center"><div class="row"><div class="col-sm-3"><img src="'+orderedListData[i].img_url+'" class="img-responsive grocery-item" style="width:100%" alt="'+orderedListData[i].movie_name+'"><p>$ '+orderedListData[i].price+'</p></div><div class="col-sm-5 text-area">'+orderedListData[i].movie_name+'</div></div></div></a>');
 					}
 				}
 			}
